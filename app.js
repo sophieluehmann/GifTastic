@@ -34,9 +34,11 @@ function displayGifs() {
             console.log(response.data[i].url);
             var gifURL = response.data[i].url;
 
-            var newGif = $('<img src="' + gifURL + '">');
-            console.log(newGif);
+            //var newGif = $('<img url="' + gifURL + '">');
+            //console.log(newGif);
             $("#gifs-view").append('<img src="' + gifURL + '">');
+            //$("#gifs-view").append(newGif);
+
     
         }
         
