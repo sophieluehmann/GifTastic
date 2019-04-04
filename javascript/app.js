@@ -1,13 +1,15 @@
 var snacks = ['cheese', 'pretzels', 'apple', 'chocolate', 'almonds', 'cookies', 'vodka', 'Jennifer Lopez'];
 console.log(snacks);
 
-for (var i=0; i<snacks.length; i++) {
-    var a = $("<button>");
-    a.addClass("snacks");
-    a.attr("snack-name", snacks[i]);
-    a.text(snacks[i]);
-    $("#buttons-view").append(a);
-};
+$(document).ready(function(){
+    for (var i=0; i<snacks.length; i++) {
+        var a = $("<button>");
+        a.addClass("snacks");
+        a.attr("snack-name", snacks[i]);
+        a.text(snacks[i]);
+        $("#buttons-view").append(a);
+    };
+});
 
 function addButton() {
     $("#buttons-view").empty();
