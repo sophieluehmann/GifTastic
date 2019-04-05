@@ -1,0 +1,25 @@
+button {
+    background-color: lightcoral;
+    margin: 2px;
+    padding: 7px;
+    font-size: 15px;
+}
+
+#buttons-view {
+    float: none;
+    align-self: auto;
+}
+
+form {
+    color: blue;
+    margin: 20px;
+    font-size: 30px;
+}
+
+input {
+    font-size: 20px;
+}
+
+body {
+
+}
