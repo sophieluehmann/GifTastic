@@ -31,17 +31,11 @@ function displayGifs() {
         method: "GET"
     }).then(function(response){
         $("#gifs-view").empty();
-        
+        console.log(response)
         for (i=0; i<response.data.length; i++) {
-            console.log(response.data[i].url);
-            var gifURL = response.data[i].url;
-
-            //var newGif = $('<img url="' + gifURL + '">');
-            //console.log(newGif);
+            console.log(response.data[i].images.fixed_height_still.url);
+            var gifURL = response.data[i].images.fixed_height_still.url;
             $("#gifs-view").append('<img src="' + gifURL + '">');
-            //$("#gifs-view").append(newGif);
-
-    
         }
         
     });     
@@ -49,9 +43,7 @@ function displayGifs() {
 
 $(document).on("click", ".snacks", displayGifs);
 
-//THIS CODE IS FROM EXERCISE IN CLASS
-/*
-$(".gif").on("click", function() {
+$("img").on("click", function() {
     
     var state = $(this).attr("data-state");
     console.log(state);
@@ -67,7 +59,7 @@ $(".gif").on("click", function() {
       console.log($(this).attr("data-still"));
       $(this).attr("src", $(this).attr("data-still"));
     }
-*/
+});
 
 
 
