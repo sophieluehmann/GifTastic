@@ -33,12 +33,10 @@ function displayGifs() {
         $("#gifs-view").empty();
         console.log(response)
         for (i=0; i<response.data.length; i++) {
-            console.log(response.data[i].images.fixed_height_still.url);
-            var gifURL = response.data[i].images.fixed_height.url;
-            console.log(response.data[i].rating)
+            var gifURL = response.data[i].images.fixed_height_still.url;
             $("#gifs-view").append('<img id="gif" src="' + gifURL + '" data-state="still">');
-            console.log(this);
             $("#gifs-view").append(response.data[i].rating);
+            console.log(this);
         }
         
     });     
@@ -46,38 +44,15 @@ function displayGifs() {
 
 $(document).on("click", ".snacks", displayGifs);
 
-
-//$("#gif").onClick(
-    
-    
-   // console.log(this)
-    //var state = $(this).attr("data-state");
-    
-
-    /*if (state === "still") {
-      $(this).attr("data-state", "animate");
-      console.log($(this).attr("data-animate"));
-      $(this).attr("src", $(this).attr("data-animate"));
-    }
-
-    if (state === "animate") {
-      $(this).attr("data-state", "still");
-      console.log($(this).attr("data-still"));
-      $(this).attr("src", $(this).attr("data-still"));
-    }*/
-//);
+// add to this to animate/pause the gifs
+/*$("#gif").on("click", function() {  
+})*/
 
 
 
 $("#add-topic").on("click", function(event) {
     event.preventDefault();
-
-    // This line grabs the input from the textbox
     var snack = $("#topic-input").val().trim();
-
-    // The movie from the textbox is then added to our array
     snacks.push(snack);
-
-    // Calling renderButtons which handles the processing of our movie array
     addButton();
 });
