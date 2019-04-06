@@ -35,8 +35,10 @@ function displayGifs() {
         for (i=0; i<response.data.length; i++) {
             console.log(response.data[i].images.fixed_height_still.url);
             var gifURL = response.data[i].images.fixed_height.url;
+            console.log(response.data[i].rating)
             $("#gifs-view").append('<img id="gif" src="' + gifURL + '" data-state="still">');
             console.log(this);
+            $("#gifs-view").append(response.data[i].rating);
         }
         
     });     
@@ -45,10 +47,10 @@ function displayGifs() {
 $(document).on("click", ".snacks", displayGifs);
 
 
-$("img").on("click", function() {
+//$("#gif").onClick(
     
-    var src = $(this).attr("src");
-    console.log(this);
+    
+   // console.log(this)
     //var state = $(this).attr("data-state");
     
 
@@ -63,7 +65,7 @@ $("img").on("click", function() {
       console.log($(this).attr("data-still"));
       $(this).attr("src", $(this).attr("data-still"));
     }*/
-});
+//);
 
 
 
