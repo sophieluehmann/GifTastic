@@ -34,8 +34,9 @@ function displayGifs() {
         console.log(response)
         for (i=0; i<response.data.length; i++) {
             console.log(response.data[i].images.fixed_height_still.url);
-            var gifURL = response.data[i].images.fixed_height_still.url;
-            $("#gifs-view").append('<img src="' + gifURL + '">');
+            var gifURL = response.data[i].images.fixed_height.url;
+            $("#gifs-view").append('<img id="gif" src="' + gifURL + '" data-state="still">');
+            console.log(this);
         }
         
     });     
@@ -43,12 +44,15 @@ function displayGifs() {
 
 $(document).on("click", ".snacks", displayGifs);
 
+
 $("img").on("click", function() {
     
-    var state = $(this).attr("data-state");
-    console.log(state);
+    var src = $(this).attr("src");
+    console.log(this);
+    //var state = $(this).attr("data-state");
+    
 
-    if (state === "still") {
+    /*if (state === "still") {
       $(this).attr("data-state", "animate");
       console.log($(this).attr("data-animate"));
       $(this).attr("src", $(this).attr("data-animate"));
@@ -58,7 +62,7 @@ $("img").on("click", function() {
       $(this).attr("data-state", "still");
       console.log($(this).attr("data-still"));
       $(this).attr("src", $(this).attr("data-still"));
-    }
+    }*/
 });
 
 
