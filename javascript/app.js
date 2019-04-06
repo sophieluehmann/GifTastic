@@ -45,6 +45,10 @@ function displayGifs() {
 $(document).on("click", ".snacks", displayGifs);
 
 // add to this to animate/pause the gifs
+// all that needs to be done is on click, if data-state = still,
+// change the url to end in "fixed_height.url" and change data-state to "animated"
+// if data-state = animated, change url to end in "fixed_height_still.url" and change data state to "still"
+
 /*$("#gif").on("click", function() {  
 })*/
 
