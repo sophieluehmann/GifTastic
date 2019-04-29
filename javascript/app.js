@@ -49,7 +49,7 @@ $(document).on("click", ".snacks", displayGifs);
     function animate() {
         var gifID = $(this).attr("id");   
         
-        var queryURL = "http://api.giphy.com/v1/gifs/" + gifID+ "?api_key=JH6y2mxfZu7D4wIPyQa5dmWh3IfY4pG1&q"
+        var queryURL = "https://api.giphy.com/v1/gifs/" + gifID+ "?api_key=JH6y2mxfZu7D4wIPyQa5dmWh3IfY4pG1&q";
         $.ajax({
             url: queryURL,
             method: "GET"
