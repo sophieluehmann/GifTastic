@@ -34,7 +34,8 @@ function displayGifs() {
         console.log(response)
         for (i=0; i<response.data.length; i++) {
             var gifURL = response.data[i].images.fixed_height_still.url;
-            $("#gifs-view").append('<img id="gif" src="' + gifURL + '" data-state="still">');
+            var gifID = response.data[i].id;
+            $("#gifs-view").append('<img id="' + gifID + '" src="' + gifURL + '" data-state="still">');
             $("#gifs-view").append(response.data[i].rating);
             console.log(this);
         }
@@ -44,13 +45,33 @@ function displayGifs() {
 
 $(document).on("click", ".snacks", displayGifs);
 
-// add to this to animate/pause the gifs
-// all that needs to be done is on click, if data-state = still,
-// change the url to end in "fixed_height.url" and change data-state to "animated"
-// if data-state = animated, change url to end in "fixed_height_still.url" and change data state to "still"
 
-/*$("#gif").on("click", function() {  
-})*/
+    function animate() {
+        var gifID = $(this).attr("id");   
+        
+        var queryURL = "http://api.giphy.com/v1/gifs/" + gifID+ "?api_key=JH6y2mxfZu7D4wIPyQa5dmWh3IfY4pG1&q"
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function(response){
+
+            if ($("#" + gifID).attr("data-state") === "still") {
+            var animateURL = response.data.images.fixed_height.url;
+            $("#" + gifID).attr("src", animateURL);
+            $("#" + gifID).attr("data-state", "animate");
+            } else if ($("#" + gifID).attr("data-state") === "animate") {
+                var gifURL = response.data.images.fixed_height_still.url;
+                $("#" + gifID).attr("src", gifURL);
+                $("#" + gifID).attr("data-state", "still");
+            }
+        });     
+  
+    }
+    
+
+
+$('#gifs-view').on('click', 'img', animate);
+
 
 
 
