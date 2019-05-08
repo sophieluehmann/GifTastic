@@ -36,3 +36,7 @@ body {
 img {
     margin: 10px;
 }
+
+.border {
+    border: 10px solid #dee2e6!important
+}

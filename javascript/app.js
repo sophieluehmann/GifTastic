@@ -1,4 +1,4 @@
-var snacks = ['cheese', 'pretzels', 'apple', 'chocolate', 'almonds', 'cookies', 'vodka', 'Jennifer Lopez'];
+var snacks = ['cheese', 'pretzels', 'apple', 'chocolate', 'almonds', 'cookies', 'candy', 'donuts'];
 console.log(snacks);
 
 $(document).ready(function(){
@@ -35,7 +35,7 @@ function displayGifs() {
         for (i=0; i<response.data.length; i++) {
             var gifURL = response.data[i].images.fixed_height_still.url;
             var gifID = response.data[i].id;
-            $("#gifs-view").append('<img id="' + gifID + '" src="' + gifURL + '" data-state="still">');
+            $("#gifs-view").append('<img id="' + gifID + '" src="' + gifURL + '" data-state="still" class="border border-white">');
             $("#gifs-view").append(response.data[i].rating);
             console.log(this);
         }
