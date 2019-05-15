@@ -35,8 +35,8 @@ function displayGifs() {
         for (i=0; i<response.data.length; i++) {
             var gifURL = response.data[i].images.fixed_height_still.url;
             var gifID = response.data[i].id;
-            $("#gifs-view").append('<figure><img id="' + gifID + '" src="' + gifURL + '" data-state="still" class="border border-white"></figure>');
-            $("#" + gifID).append('<figcaption>' + response.data[i].rating + '</figcaption>');
+            $("#gifs-view").append('<figure class="figure"><img id="' + gifID + '" src="' + gifURL + '" data-state="still" class="border border-white"></figure>');
+            $("#" + gifID).append('<figcaption class="figure-caption"><p>' + response.data[i].rating + '</p></figcaption>');
             console.log(this);
         }
         

@@ -24,7 +24,7 @@ body {
 }
 
 .container {
-    margin-left: 20%;
+    /* margin-left: 20%; */
 }
 
 #gifs-view {
@@ -36,13 +36,13 @@ img {
     margin: 10px;
 }
 
-.border {
+/*.border {
     border-style: outset;
-    border-width: medium;
-} 
+    border-width: medium; 
+} */
 
 figcaption {
     display: block;
     size: 10px;
-    color: white;
+    color: black;
 }
