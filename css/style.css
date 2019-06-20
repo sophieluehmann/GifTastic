@@ -41,8 +41,8 @@ img {
     border-width: medium; 
 } */
 
-figcaption {
-    display: block;
-    size: 10px;
-    color: black;
+.card {
+    padding-right: 30px;
+    float: left;
+    align-content: center;
 }
