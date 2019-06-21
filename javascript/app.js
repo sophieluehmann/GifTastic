@@ -25,7 +25,7 @@ function addButton() {
 
 function displayGifs() {
     var gifName = $(this).attr("snack-name");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=JH6y2mxfZu7D4wIPyQa5dmWh3IfY4pG1&q=" + gifName + "&limit=10&offset=0&rating=PG&lang=en";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=JH6y2mxfZu7D4wIPyQa5dmWh3IfY4pG1&q=" + gifName + "&limit=12&offset=0&rating=PG&lang=en";
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -35,8 +35,8 @@ function displayGifs() {
         for (i=0; i<response.data.length; i++) {
             var gifURL = response.data[i].images.fixed_height_still.url;
             var gifID = response.data[i].id;
-            $("#gifs-view").append('<div class="card" id="' +gifID+ '"><img class="card-img-top" id="' + gifID + '" src="' + gifURL + '" data-state="still" class="border border-white">');
-            $("#" + gifID).append('<div class="card-title"><h5 class="card-title">Rating:       ' + response.data[i].rating + '</h5></div></div>');
+            $("#gifs-view").append('<div class="card" id="gifcard' + gifID + '"><img class="card-img-top" id="' + gifID + '" src="' + gifURL + '" data-state="still" class="border border-white"></figure>');
+            $('#gifcard' + gifID).append('<h5 class="cardtitle">Rating: ' + response.data[i].rating + '</h5>');
             console.log(this);
         }
         
@@ -46,7 +46,8 @@ function displayGifs() {
 $(document).on("click", ".snacks", displayGifs);
 
 
-    function animate() {
+   /* function animate() {
+        console.log("clicked");
         var gifID = $(this).attr("id");   
         
         var queryURL = "https://api.giphy.com/v1/gifs/" + gifID+ "?api_key=JH6y2mxfZu7D4wIPyQa5dmWh3IfY4pG1&q";
@@ -66,11 +67,31 @@ $(document).on("click", ".snacks", displayGifs);
             }
         });     
   
-    }
+    } */
     
 
 
-$('#gifs-view').on('click', 'img', animate);
+$('#gifs-view').on("click", 'img', function() {
+    console.log(this);
+    var gifID = $(this).attr("id");   
+    
+    var queryURL = "https://api.giphy.com/v1/gifs/" + gifID+ "?api_key=JH6y2mxfZu7D4wIPyQa5dmWh3IfY4pG1&q";
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response){
+
+        if ($("#" + gifID).attr("data-state") === "still") {
+        var animateURL = response.data.images.fixed_height.url;
+        $("#" + gifID).attr("src", animateURL);
+        $("#" + gifID).attr("data-state", "animate");
+        } else if ($("#" + gifID).attr("data-state") === "animate") {
+            var gifURL = response.data.images.fixed_height_still.url;
+            $("#" + gifID).attr("src", gifURL);
+            $("#" + gifID).attr("data-state", "still");
+        }
+    });   
+})
 
 
 
