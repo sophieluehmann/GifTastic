@@ -14,7 +14,7 @@ $(document).ready(function(){
 function addButton() {
     $("#buttons-view").empty();
     for (var i=0; i<snacks.length; i++) {
-        var a = $("<button>");
+        var a = $("<button type='button' class='btn btn-outline-success'>");
         a.addClass("snacks");
         a.attr("snack-name", snacks[i]);
         a.text(snacks[i]);
