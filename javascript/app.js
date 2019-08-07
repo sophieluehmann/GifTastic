@@ -46,30 +46,6 @@ function displayGifs() {
 $(document).on("click", ".snacks", displayGifs);
 
 
-   /* function animate() {
-        console.log("clicked");
-        var gifID = $(this).attr("id");   
-        
-        var queryURL = "https://api.giphy.com/v1/gifs/" + gifID+ "?api_key=JH6y2mxfZu7D4wIPyQa5dmWh3IfY4pG1&q";
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function(response){
-
-            if ($("#" + gifID).attr("data-state") === "still") {
-            var animateURL = response.data.images.fixed_height.url;
-            $("#" + gifID).attr("src", animateURL);
-            $("#" + gifID).attr("data-state", "animate");
-            } else if ($("#" + gifID).attr("data-state") === "animate") {
-                var gifURL = response.data.images.fixed_height_still.url;
-                $("#" + gifID).attr("src", gifURL);
-                $("#" + gifID).attr("data-state", "still");
-            }
-        });     
-  
-    } */
-    
-
 
 $('#gifs-view').on("click", 'img', function() {
     console.log(this);
